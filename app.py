@@ -1,77 +1,141 @@
-# Импортируем Flask — это инструмент для создания сайтов на Python
+# Импортируем Flask — фреймворк (инструмент), который помогает создавать сайты на Python
 from flask import Flask
 
-# Создаём "приложение" — как сервер, который будет показывать страницы
-app = Flask(__name__)
+# Создаём "приложение" (объект сайта)
+app = Flask(__name__)  # name — нужно, чтобы Flask понял, где находится наш код
 
-# Главная страница: когда заходишь на сайт (/)
+
+# Главная страница сайта
+
 @app.route('/')
 def home():
-    # Возвращаем HTML-код — это то, что увидит браузер
-    # HTML — язык для структуры страницы (заголовки, текст, картинки)
+    # HTML-код, который увидит пользователь при заходе на сайт
     return '''
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Мой сайт на Python</title>
-        <!-- CSS-стили: делают сайт красивым (цвета, шрифты) -->
+        <meta charset="utf-8">
+        <title>Добрые сердца — Благотворительный проект</title>
+
+        <!-- Стили оформления сайта -->
         <style>
-            body { 
-                background-color: lightblue;  /* Фон страницы — светло-голубой */
-                font-family: Arial;  /* Шрифт — простой Arial */
-                margin: 20px;  /* Отступы от краёв */
+            body {
+                background-color: #FFFFFF;     /* Фон — белый */
+                font-family: Arial, sans-serif; /* Шрифт текста */
+                color: #333333;                 /* Тёмно-серый текст */
+                margin: 0;
+                padding: 0;
             }
-            h1 { 
-                color: navy;  /* Заголовок — тёмно-синий */
-                text-align: center;  /* По центру */
+
+            header {
+                background-color: #2E8B57;      /* Изумрудно-зелёная шапка */
+                color: white;                   /* Белый текст в шапке */
+                text-align: center;
+                padding: 20px;
             }
-            p { 
-                font-size: 18px;  /* Текст побольше */
+
+            h1 {
+                margin: 0;
+                font-size: 32px;
             }
-            img { 
-                display: block;  /* Картинка по центру */
-                margin: 0 auto;  /* Авто-отступы */
+
+            main {
+                padding: 20px;
+                text-align: center;
             }
-            a { 
-                color: green;  /* Ссылки — зелёные */
-                text-decoration: none;  /* Без подчёркивания */
+
+            .category {
+                background-color: #F9D949;      /* Золотистый блок */
+                border-radius: 10px;
+                padding: 15px;
+                margin: 10px auto;
+                width: 300px;
+                transition: 0.3s;
+            }
+
+            .category:hover {
+                background-color: #2E8B57;      /* При наведении — зелёный */
+                color: white;
+                cursor: pointer;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            footer {
+                background-color: #2E8B57;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                margin-top: 30px;
             }
         </style>
     </head>
+
     <body>
-        <h1>Привет! Это мой первый сайт на Python</h1>
-        <p>Я школьник и учусь программировать. Flask — это просто и круто!</p>
-        <!-- Картинка: замени src на свою ссылку (найди бесплатную картинку в Google) -->
-        <img src="https://via.placeholder.com/300x200?text=Моя+Картинка" alt="Моя картинка" width="300">
-        <p>Это картинка. Добавь свою!</p>
-        <!-- Ссылка на другую страницу -->
-        <p><a href="/about">Перейти на страницу "Обо мне"</a></p>
+        <!-- Верхняя часть сайта -->
+        <header>
+            <h1> Добрые сердца</h1>
+            <p>Каталог благотворительных организаций</p>
+        </header>
+
+        <!-- Основной контент -->
+        <main>
+            <h2>Кому вы хотите помочь?</h2>
+
+            <!-- Категории (переходы на разные страницы) -->
+            <div class="category"><a href="/children">Детям</a></div>
+            <div class="category"><a href="/elderly">Пожилым людям</a></div>
+            <div class="category"><a href="/sick">Больным</a></div>
+            <div class="category"><a href="/families">Семьям в трудной ситуации</a></div>
+        </main>
+
+        <!-- Нижняя часть сайта -->
+        <footer>
+            <p>© 2025 Добрые сердца. Все права защищены.</p>
+        </footer>
     </body>
     </html>
     '''
 
-# Вторая страница: /about (когда кликаешь на ссылку)
-@app.route('/about')
-def about():
-    # Ещё один HTML, но проще — только текст
+# Страницы категорий
+
+@app.route('/children')
+def children():
     return '''
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Обо мне</title>
-        <style>
-            body { background-color: lightgreen; color: darkgreen; }
-            h1 { text-align: center; }
-        </style>
-    </head>
-    <body>
-        <h1>Обо мне</h1>
-        <p>Меня зовут [твоё имя]. Я люблю Python, игры и друзей.</p>
-        <p><a href="/">Вернуться на главную</a></p>
-    </body>
-    </html>
+    <h1>Помощь детям</h1>
+    <p>Здесь будут фонды, которые помогают детям.</p>
+    <p><a href="/">← Вернуться на главную</a></p>
     '''
 
-# Запуск сайта: debug=True показывает ошибки, если что-то не так
+@app.route('/elderly')
+def elderly():
+    return '''
+    <h1>Помощь пожилым людям</h1>
+    <p>Здесь будут организации, помогающие пенсионерам и одиноким людям.</p>
+    <p><a href="/">← Вернуться на главную</a></p>
+    '''
+
+@app.route('/sick')
+def sick():
+    return '''
+    <h1>Помощь больным</h1>
+    <p>Здесь можно разместить ссылки на фонды, поддерживающие людей с заболеваниями.</p>
+    <p><a href="/">← Вернуться на главную</a></p>
+    '''
+@app.route('/families')
+def families():
+    return '''
+    <h1>Помощь семьям</h1>
+    <p>Здесь собраны организации, поддерживающие многодетные и малообеспеченные семьи.</p>
+    <p><a href="/">← Вернуться на главную</a></p>
+    '''
+
+
+# Запуск сайта
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host = "0.0.0.0",port = 5000,debug=True)
