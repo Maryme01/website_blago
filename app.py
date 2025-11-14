@@ -150,6 +150,21 @@ def people():
             <div class="category"><a href="/sick_adults">Больным взрослым</a></div>
             <div class="category"><a href="/families">Семьям в трудной ситуации</a></div>
         </main>
+        <style>
+        .back {
+            display: block;           /* Чтобы заняло всю ширину */
+            text-align: center;       /* Центрируем текст */
+            margin: 20px auto;        /* Отступ сверху/снизу */
+            color: white;             /* Белый цвет */
+            font-weight: bold;        /* Жирный текст */
+            font-size: 20px;          /* Размер текста */
+            text-decoration: none;    /* Без подчеркивания */
+            transition: color 0.3s ease;
+        }
+        .back:hover {
+            color: #A8E6A2;           /* Светло-зелёный при наведении */
+        }
+        </style>
         <a href="/" class="back">← Вернуться на основную</a>
     </body>
     </html>
@@ -157,11 +172,93 @@ def people():
 
 # 🔹 Подкатегории Людям
 @app.route('/children')
-def children():
+def children_donations():
     return '''
-    <h1>Детям</h1>
-    <p>Подкатегории: сироты, дети из малоимущих семей, дети с особыми потребностями</p>
-    <a href="/people" class="back">← Вернуться назад</a>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Помощь детям</title>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            body { font-family:'Quicksand', Arial, sans-serif; margin:0; padding:0; background:#344E41; color:#E0E0E0; }
+            header { background:#3A5A40; color:white; padding:20px; text-align:center; }
+            h1 { margin:0; font-size:48px; }
+            main { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; padding:20px; }
+            .donation-card {
+                background-color:#6C8E63;
+                border:1px solid #2E4F4F;
+                border-radius:15px;
+                width:300px;
+                display:flex;
+                flex-direction:column;
+                overflow:hidden;
+                box-shadow:0 4px 6px rgba(0,0,0,0.3);
+                transition: transform 0.3s ease;
+            }
+            .donation-card:hover { transform: scale(1.03); }
+            .donation-card img { width:100%; height:200px; object-fit:cover; }
+            .donation-card h2 { margin:10px; font-size:24px; text-align:center; }
+            .donation-card p { margin:0 10px 10px 10px; font-size:16px; line-height:1.4; }
+            .donation-card a.donate {
+                display:block;
+                margin:10px;
+                padding:10px;
+                background-color:#7FB77E; /* чуть светлее */
+                color:#1C1C1C;
+                text-align:center;
+                font-weight:bold;
+                border-radius:8px;
+                text-decoration:none;
+                transition: background 0.3s ease;
+            }
+            .donation-card a.donate:hover { background-color:#95C18F; }
+            .back-text {
+                text-align:center;
+                margin:20px;
+                color:white;
+                font-weight:bold;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Помощь детям</h1>
+        </header>
+        <main>
+            <div class="donation-card">
+                <img src="/static/images/child2.jpg" alt="Иван, 7 лет">
+                <h2>Иван, 7 лет</h2>
+                <p>Иван живет в детском доме и мечтает о школе с современными учебными материалами. Любая помощь важна!</p>
+                <a href="#" class="donate">Помочь</a>
+            </div>
+            <div class="donation-card">
+                <img src="/static/images/child1.jpg" alt="Маша, 5 лет">
+                <h2>Маша, 5 лет</h2>
+                <p>Маша нуждается в медицинской поддержке и игрушках для развития. Ваш вклад сделает её жизнь ярче.</p>
+                <a href="#" class="donate">Помочь</a>
+            </div>
+        </main>
+        <a href="/people" class="back">← Вернуться назад</a>
+
+        <style>
+        .back {
+            display: block;           /* Чтобы заняло всю ширину */
+            text-align: center;       /* Центрируем текст */
+            margin: 20px auto;        /* Отступ сверху/снизу */
+            color: white;             /* Белый цвет */
+            font-weight: bold;        /* Жирный текст */
+            font-size: 20px;          /* Размер текста */
+            text-decoration: none;    /* Без подчеркивания */
+            transition: color 0.3s ease;
+        }
+        .back:hover {
+            color: #A8E6A2;           /* Светло-зелёный при наведении */
+        }
+        </style>
+        </div>
+    </body>
+    </html>
     '''
 
 @app.route('/elderly')
@@ -235,6 +332,21 @@ def animals():
             <div class="category"><a href="/shelters">Приюты</a></div>
             <div class="category"><a href="/animal_rescue">Спасение</a></div>
         </main>
+        <style>
+        .back {
+            display: block;           /* Чтобы заняло всю ширину */
+            text-align: center;       /* Центрируем текст */
+            margin: 20px auto;        /* Отступ сверху/снизу */
+            color: white;             /* Белый цвет */
+            font-weight: bold;        /* Жирный текст */
+            font-size: 20px;          /* Размер текста */
+            text-decoration: none;    /* Без подчеркивания */
+            transition: color 0.3s ease;
+        }
+        .back:hover {
+            color: #A8E6A2;           /* Светло-зелёный при наведении */
+        }
+        </style>
         <a href="/" class="back">← Вернуться на основную</a>
     </body>
     </html>
@@ -293,6 +405,21 @@ def ecology():
             <div class="category"><a href="/waste_recycling">Переработка отходов</a></div>
             <div class="category"><a href="/nature_protection">Защита природы</a></div>
         </main>
+        <style>
+        .back {
+            display: block;           /* Чтобы заняло всю ширину */
+            text-align: center;       /* Центрируем текст */
+            margin: 20px auto;        /* Отступ сверху/снизу */
+            color: white;             /* Белый цвет */
+            font-weight: bold;        /* Жирный текст */
+            font-size: 20px;          /* Размер текста */
+            text-decoration: none;    /* Без подчеркивания */
+            transition: color 0.3s ease;
+        }
+        .back:hover {
+            color: #A8E6A2;           /* Светло-зелёный при наведении */
+        }
+        </style>
         <a href="/" class="back">← Вернуться на основную</a>
     </body>
     </html>
@@ -352,6 +479,21 @@ def education():
             <div class="category"><a href="/school_support">Поддержка школ</a></div>
             <div class="category"><a href="/student_aid">Помощь студентам</a></div>
         </main>
+        <style>
+        .back {
+            display: block;           /* Чтобы заняло всю ширину */
+            text-align: center;       /* Центрируем текст */
+            margin: 20px auto;        /* Отступ сверху/снизу */
+            color: white;             /* Белый цвет */
+            font-weight: bold;        /* Жирный текст */
+            font-size: 20px;          /* Размер текста */
+            text-decoration: none;    /* Без подчеркивания */
+            transition: color 0.3s ease;
+        }
+        .back:hover {
+            color: #A8E6A2;           /* Светло-зелёный при наведении */
+        }
+        </style>
         <a href="/" class="back">← Вернуться на основную</a>
     </body>
     </html>
@@ -414,6 +556,21 @@ def emergency():
             <div class="category"><a href="/refugees">Беженцы</a></div>
             <div class="category"><a href="/medical_aid">Медицинская помощь</a></div>
         </main>
+        <style>
+        .back {
+            display: block;           /* Чтобы заняло всю ширину */
+            text-align: center;       /* Центрируем текст */
+            margin: 20px auto;        /* Отступ сверху/снизу */
+            color: white;             /* Белый цвет */
+            font-weight: bold;        /* Жирный текст */
+            font-size: 20px;          /* Размер текста */
+            text-decoration: none;    /* Без подчеркивания */
+            transition: color 0.3s ease;
+        }
+        .back:hover {
+            color: #A8E6A2;           /* Светло-зелёный при наведении */
+        }
+        </style>
         <a href="/" class="back">← Вернуться на основную</a>
     </body>
     </html>
@@ -472,6 +629,21 @@ def volunteers():
             <div class="category"><a href="/event_volunteers">Волонтёры на мероприятиях</a></div>
             <div class="category"><a href="/social_initiatives">Социальные инициативы</a></div>
         </main>
+        <style>
+        .back {
+            display: block;           /* Чтобы заняло всю ширину */
+            text-align: center;       /* Центрируем текст */
+            margin: 20px auto;        /* Отступ сверху/снизу */
+            color: white;             /* Белый цвет */
+            font-weight: bold;        /* Жирный текст */
+            font-size: 20px;          /* Размер текста */
+            text-decoration: none;    /* Без подчеркивания */
+            transition: color 0.3s ease;
+        }
+        .back:hover {
+            color: #A8E6A2;           /* Светло-зелёный при наведении */
+        }
+        </style>
         <a href="/" class="back">← Вернуться на основную</a>
     </body>
     </html>
